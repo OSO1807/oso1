@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bliv Flymekaniker</title>
+    <style>
+        /* Generel styling */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom, #e6f7ff, #ffffff);
+            color: #333;
+            transition: background-color 0.5s;
+        }
+
+        header {
+            height: 400px;
+            background: url('IMG_1201.jpeg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        header h1 {
+            font-size: 4rem;
+            background: linear-gradient(to right, #004080, #66ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding: 20px 30px;
+            border: 4px solid #004080;
+            border-radius: 15px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        /* Animation for header */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        /* Navigationsmenu */
+        nav {
+            background: #004080;
+            color: white;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s, transform 0.1s;
+            display: inline-block;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        nav a:hover {
+            background: white;
+            color: #004080;
+            border: 2px solid #004080;
+        }
+        nav a:active {
+            transform: translateY(2px);
+        }
+        nav a.active {
+            background: white;
+            color: #004080;
+            border: 2px solid #004080;
+        }
+
+        /* Sektion styling */
+        .section-container {
+            padding: 2rem;
+            transition: transform 0.3s ease-in-out;
+        }
+        .section {
+            display: none;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ikoner og billeder til sektioner */
+        .section-header {
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+        }
+        .section-header img, .section-header i {
+            margin-right: 10px;
+            font-size: 2.5rem;
+        }
+
+        .section-header img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Quiz styling */
+        .quiz-container {
+            margin-top: 20px;
+        }
+        .quiz-question {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .quiz-option {
+            display: block;
+            margin: 5px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .quiz-option:hover {
+            background: #e0f7fa;
+        }
+        .quiz-result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .progress-bar-container {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            margin-top: 10px;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #4caf50;
+            width: 0%;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #004080;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bliv Flymekaniker - Militæret</h1>
+    </header>
+
+    <!-- Navigationsmenu -->
+    <nav>
+        <a href="#" class="nav-link" onclick="showSection('uddannelse')">Uddannelse</a>
+        <a href="#" class="nav-link" onclick="showSection('Fordele')">Fordele</a>
+        <a href="#" class="nav-link" onclick="showSection('Jobmuligheder')">Jobmuligheder</a>
+        <a href="#" class="nav-link" onclick="showSection('quiz')">Quiz</a>
+        <a href="#" class="nav-link" onclick="showSection('Interview')">Interview</a>
+    </nav>
+
+   <!-- Uddannelse -->
+<div class="section-container">
+    <div id="uddannelse" class="section active">
+        <div class="section-header">
+            <img src="https://img.icons8.com/ios/452/graduation-cap.png" alt="Graduation Icon" style="width: 40px; height: 40px; margin-right: 10px;">
+            <h2>Uddannelse | Vejen til at blive flymekaniker</h2>
+        </div>
+        <p>At blive flymekaniker i militæret kræver, at man gennemgår flere trin fra folkeskolen til afsluttet uddannelse. Her er en oversigt over forløbet:</p>
+
+        <h3>1. Adgangskrav</h3>
+        <ul>
+            <li>Afslutning af 9. eller 10. klasse med en karakter på minimum 02 i Dansk, Engelsk og Matematik (eller en tilfredsstillende karakter).</li>
+            <li>Du skal være fyldt 18 år for at kunne søge ind.</li>
+            <li>Bestå en optagelsesprøve (beskrevet tidligere).</li>
+        </ul>
+
+        <h3>2. Militær basisuddannelse</h3>
+        <p>Inden selve flymekanikeruddannelsen skal du gennemføre en 4-måneders militær basisuddannelse. Her lærer du:</p>
+        <ul>
+            <li>Grundlæggende militærtræning, herunder våbenbrug og førstehjælp.</li>
+            <li>Andre nødvendige færdigheder, der forbereder dig til en karriere i militæret.</li>
+        </ul>
+
+        <h3>3. Flymekanikeruddannelsen</h3>
+        <p>Flymekanikeruddannelsen varer 3-4 år og består af tre hovedområder:</p>
+        <ul>
+            <li><b>Teori:</b> Du lærer om flyteknologi, mekanik, elektronik, hydraulik og aerodynamik.</li>
+            <li><b>Praktik:</b> Du arbejder med forsvarets fly og helikoptere, som F-16 eller F-35 (sjældent).</li>
+            <li><b>International certificering:</b> Uddannelsen inkluderer EASA Part-66-standarder, som giver dig anerkendelse i både militære og civile sektorer.</li>
+        </ul>
+
+        <h3>4. International certificering</h3>
+        <p>EASA Part-66-certificeringen gør det muligt for dig at arbejde som flymekaniker både i militæret og i civile sammenhænge. Dette åbner dørene for en bred vifte af jobmuligheder, både nationalt og internationalt.</p>
+    </div>
+</div>
+
+
+        <!-- Fordele -->
+<div id="Fordele" class="section">
+    <div class="section-header">
+        <img src="https://img.icons8.com/ios/452/wrench.png" alt="Wrench Icon" style="width: 40px; height: 40px; margin-right: 10px;"> 
+        <h2>Fordele | Kan hjælpe dig med at vælge</h2>
+    </div>
+    <p>Alle uddannelser har deres fordele, og det gælder også flymekanikeruddannelsen. Her er nogle punkter, der kan hjælpe dig med at vurdere, om det er det rette valg for dig:</p>
+
+    <h3>1. Interesse</h3>
+    <p>Det er en fordel at have interesse for mekanik, teknologi og fly. Har du erfaring fra fritidsaktiviteter, der involverer elektronik eller mekanik, kan det også være en stor hjælp.</p>
+
+    <h3>2. God fysisk form</h3>
+    <p>Arbejdet som flymekaniker kan være fysisk krævende. Eksempler på opgaver inkluderer:</p>
+    <ul>
+        <li>Løft af tungt udstyr.</li>
+        <li>Arbejdsopgaver i små rum med begrænset plads.</li>
+        <li>Arbejdsopgaver på høje steder, hvor man skal transportere værktøj og udstyr.</li>
+    </ul>
+
+    <h3>3. Evne til at arbejde under pres</h3>
+    <p>Flymekanikere, især i militæret, arbejder ofte under pres. Det er vigtigt at kunne levere præcist og pålideligt arbejde, selv i stressede situationer. Som der er stor chance for at man kan blive udsat for i militæret hvis nu man er blevet udsendt skal det stædig kunne gøres ordenligt uanset hvad der sker omkring en.</p>
+
+    <h3>4. Engelskkundskaber</h3>
+    <p>Engelsk er det internationale arbejdssprog i luftfarten. At være god til engelsk er en stor fordel, især hvis man arbejder i internationale miljøer eller kommunikerer med udenlandske kolleger.</p>
+</div>
+
+
+       <!-- Jobmuligheder -->
+<div id="Jobmuligheder" class="section">
+    <div class="section-header">
+        <img src="https://img.icons8.com/ios/452/business.png" alt="Business Icon" style="width: 40px; height: 40px; margin-right: 10px;"> 
+        <h2>Jobmuligheder | Valg af arbejdsplads</h2>
+    </div>
+    <p>Som uddannet flymekaniker har du mange muligheder for at vælge arbejdsplads og specialisere dig inden for forskellige områder.</p>
+
+    <h3>1. Arbejdspladser</h3>
+    <p>Flymekanikere kan finde job på flere forskellige typer arbejdspladser, herunder:</p>
+    <ul>
+        <li>Luftfartsselskaber som SAS eller Ryanair.</li>
+        <li>Flyværksteder og vedligeholdelsesfirmaer som Danish Air Transport.</li>
+        <li>Militæret, hvor du kan arbejde med kampfly eller transportfly.</li>
+        <li>Internationale arbejdspladser, hvis du ønsker at arbejde i udlandet.</li>
+    </ul>
+
+    <h3>2. Specialisering</h3>
+    <p>Efter endt uddannelse kan du tage specialistkurser for at blive ekspert inden for bestemte områder som:</p>
+    <ul>
+        <li>Motorer</li>
+        <li>Våbensystemer</li>
+        <li>Andre tekniske områder afhængigt af dine interesser</li>
+    </ul>
+    <p>Specialisering gør det muligt at dykke dybere ned i specifikke aspekter af flymekanik og kan åbne døren til mere nicheprægede jobmuligheder.</p>
+
+    <h3>3. Valg af fokusområde</h3>
+    <p>Ud over at vælge din arbejdsplads er det vigtigt at overveje, hvad du ønsker at arbejde med:</p>
+    <ul>
+        <li>Vedligeholdelse af fly på værksteder eller i felten.</li>
+        <li>Arbejdet med specifikke flytyper, såsom passagerfly, privatfly, kampfly eller transportfly.</li>
+    </ul>
+    <p>Hvert område har sine egne udfordringer og fordele, og det handler om at finde det, der passer bedst til dine interesser og kompetencer.</p>
+</div>
+
+        <!-- Quiz -->
+        <div id="quiz" class="section">
+            <h2>Quiz: Hvad ved du om at blive flymekaniker?</h2>
+            <div class="quiz-container">
+                <div id="question" class="quiz-question"></div>
+                <div id="options"></div>
+                <div id="result" class="quiz-result"></div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar" class="progress-bar"></div>
+                </div>
+                <button id="nextButton" onclick="nextQuestion()" style="display: none;">Næste spørgsmål</button>
+            </div>
+        </div>
+
+       <!-- Interview -->
+<div id="Interview" class="section">
+    <h2>Interview | Svar fra uddannet flymekaniker</h2>
+    
+    <p><strong>Navn:</strong> Marcel</p>
+    <p><strong>Alder:</strong> 25 år</p>
+    <p>Jeg er B1.1 flymekaniker og har været færdiguddannet i to år. Mit faste tjenestested er Flyvestation Skrydstrup, hvor jeg blandt andet klargør fly (at gøre dem klar til at flyve) og reparerer dem, når der er fejl. Det er et fantastisk arbejde, som jeg er meget glad for, da det både er spændende og varieret.</p>
+
+    <h3>Hvordan er en typisk arbejdsdag?</h3>
+    <p>En normal arbejdsdag starter med en briefing om dagens forløb. Her kan jeg blive tildelt en flyver, som skal klargøres til dagens flyvning, eller assistere med reparationer. Når jeg arbejder med en flyver, foregår det typisk sådan:</p>
+    <ul>
+        <li>Samle de nødvendige ressourcer.</li>
+        <li>Udføre inspektioner og klargøring.</li>
+        <li>Dokumentere arbejdet i papirerne.</li>
+        <li>Hjælpe piloten med at komme på plads i cockpittet og starte flyveren op.</li>
+        <li>Foretage endnu en inspektion før afgang.</li>
+    </ul>
+    <p>Når flyet er i luften, forbereder vi os på at tage imod det igen. Efter landingen laver vi inspektioner og tanker flyet op til næste tur. Sådan kan en typisk dag se ud for mig.</p>
+
+    <h3>Hvordan var uddannelsen?</h3>
+    <p>Uddannelsen som B1.1 flymekaniker var spændende og meget lærerig. Den varer tre år og består af skiftevis skole- og praktikperioder på et halvt år. Jeg lærte en masse teori, som jeg hurtigt kunne bruge i praksis. Selvom skoleperioderne kunne være krævende, især med fag som matematik og aerodynamik, var balancen mellem skole og praktik rigtig god.</p>
+
+    <h3>Hvilke videreuddannelser kan man tage?</h3>
+    <p>Jeg har en HTX fra folkeskolen, som jeg kan bruge, hvis jeg vil læse videre. Dog føler jeg ikke behov for det, da flymekanikeruddannelsen er meget teknisk og kan bruges i mange andre fagområder, såsom vedligeholdelse af maskiner.</p>
+
+    <h3>Var det svært at komme ind på uddannelsen?</h3>
+    <p>Personligt synes jeg ikke, det var svært at komme ind. Kravene er:</p>
+    <ul>
+        <li>Være mindst 18 år.</li>
+        <li>Have en 9.-klasses afgangseksamen.</li>
+        <li>Bestå optagelsesprøven.</li>
+    </ul>
+    <p>Optagelsesprøven består af:</p>
+    <ol>
+        <li><strong>Dag 1:</strong> Forsvarets basistest (løbetur på 2200 meter på max 12 minutter og styrkeøvelser) og faglige tests i matematik, fysik, dansk, engelsk og IQ.</li>
+        <li><strong>Dag 2:</strong> Psykologsamtale og lægeundersøgelse.</li>
+    </ol>
+
+    <h3>Hvad har du været igennem under uddannelsen?</h3>
+    <p>Uddannelsen består af 13 skolemoduler, som inkluderer:</p>
+    <ul>
+        <li>Matematik, fysik og aerodynamik.</li>
+        <li>Grundlæggende el og elektronik.</li>
+        <li>Materialer og hardware.</li>
+        <li>Vedligeholdelsesprocedurer.</li>
+        <li>Lovgivning og human factors.</li>
+        <li>Flystrukturer og systemer.</li>
+    </ul>
+    <p>Derudover skal man under praktikken udføre cirka 172 forskellige opgaver, som dokumenteres i en logbog. Eksempler på opgaver inkluderer at tanke flyet, skifte hjul og afmontere motorer.</p>
+
+    <h3>Afsluttende bemærkning</h3>
+    <p>B1-uddannelsen blev lukket sidste år i Forsvaret og er nu erstattet af A1-uddannelsen, som tager cirka et år. Dog kan man videreuddanne sig til B1 ved at bestå modulerne selvstændigt, hvis man udviser faglig interesse og kompetence.</p>
+
+    <p><em>Med venlig hilsen, Marcel</em></p>
+</div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Bliv Flymekaniker.</p>
+    </footer>
+
+    <script>
+        let currentQuestion = 0;
+        const questions = [
+            { question: "Hvad er det første trin for at blive flymekaniker?", options: ["En gymnasial uddannelse", "En erhvervsuddannelse"], answer: "En erhvervsuddannelse" },
+            { question: "Hvad arbejder en flymekaniker primært med?", options: ["Kontorarbejde", "Reparation og vedligeholdelse af fly"], answer: "Reparation og vedligeholdelse af fly" },
+            { question: "Hvor kan en flymekaniker arbejde?", options: ["I en bilfabrik", "Hos luftfartsselskaber"], answer: "Hos luftfartsselskaber" },
+            { question: "Hvor lang tid tager uddannelsen?", options: ["3-4 År", "4-5 År", "5-6 År"], answer: "4-5 År" },
+            { question: "Hvad er adgangs krav? (Gennemført 9/10 Klasse)", options: ["Mindst 02 i Dansk og Matematik", "Mindst 04 i Dansk og Matematik", "Et gennemsnit på 04"], answer: "Mindst 02 i Dansk og Matematik" },
+            { question: "Hvad skal man igennem ved optagelses prøven?", options: ["Basis-test og IQ-test", "Basis-test, IQ-test og samtale med læge", "Basis-test, IQ-test og samtale med læge og psykolog"], answer: "Basis-test, IQ-test og samtale med læge og psykolog" },
+            { question: "Kan man arbejde internationalt?", options: ["Nej, Kun i Danmark", "Ja med de rette certifikater", "Kun med statsborgerskab i arbejdslandet"], answer: "Ja med de rette certifikater" }
+        ];
+    
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+        }
+    
+        function checkAnswer(selectedOption) {
+            const correctAnswer = questions[currentQuestion].answer;
+            const result = document.getElementById('result');
+            const optionsContainer = document.getElementById('options');
+    
+            if (selectedOption === correctAnswer) {
+                result.textContent = 'Korrekt!';
+                result.style.color = 'green';
+            } else {
+                result.textContent = `Forkert! Det korrekte svar er: ${correctAnswer}`;
+                result.style.color = 'red';
+            }
+    
+            const buttons = optionsContainer.querySelectorAll('button');
+            buttons.forEach(button => button.disabled = true);
+    
+            document.getElementById('nextButton').style.display = 'block';
+        }
+    
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+                document.getElementById('result').textContent = '';
+                document.getElementById('nextButton').style.display = 'none';
+            } else {
+                document.getElementById('question').textContent = 'Quiz afsluttet! Tak for din deltagelse.';
+                document.getElementById('options').innerHTML = '';
+                document.getElementById('nextButton').style.display = 'none';
+                document.getElementById('progress-bar').style.width = '100%';
+            }
+        }
+    
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            document.getElementById('question').textContent = question.question;
+    
+            const optionsContainer = document.getElementById('options');
+            optionsContainer.innerHTML = '';
+            question.options.forEach(option => {
+                const optionElement = document.createElement('button');
+                optionElement.classList.add('quiz-option');
+                optionElement.textContent = option;
+                optionElement.onclick = () => checkAnswer(option);
+                optionsContainer.appendChild(optionElement);
+            });
+    
+            updateProgressBar();
+        }
+    
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        }
+    
+        loadQuestion();
+    </script>    
+</body>
+</html>
